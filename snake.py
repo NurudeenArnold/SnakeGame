@@ -8,10 +8,12 @@ TILE_SIZE = 30
 WINDOW_WIDTH = TILE_SIZE * COLS
 WINDOW_HEIGHT = TILE_SIZE * ROWS
 
+
 class Tile:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
 
 def reset_game():
     global snake, food, velocityX, velocityY, snake_body, game_over, score
@@ -33,7 +35,7 @@ def move():
     new_head = Tile(snake[0].x + velocityX * TILE_SIZE, snake[0].y + velocityY * TILE_SIZE)
 
     # Check for collisions with walls
-    if (new_head.x < 0 or new_head.x >= WINDOW_WIDTH or new_head.y < 0 or new_head.y >= WINDOW_HEIGHT):
+    if new_head.x < 0 or new_head.x >= WINDOW_WIDTH or new_head.y < 0 or new_head.y >= WINDOW_HEIGHT:
         print("I DIED!")
         game_over = True
         return
@@ -89,6 +91,7 @@ def draw():
 
     if not game_over:
         window.after(100, draw)
+
 
 def change_direction(e):
     global velocityX, velocityY, game_over
